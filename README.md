@@ -97,6 +97,19 @@ O retorno classifica o resultado final entre as zonas:
 
 🔴 Zona Vermelha (Crítico / Ação Imediata)
 
+### 📋 Estrutura Correta dos Dados (Exemplo)
+
+A sua planilha do Excel deve conter exatamente as quatro colunas abaixo, preenchidas com notas de **1 a 5** para cada recebimento:
+
+| F_urg | F_div | F_qual | F_amb |
+| :---: | :---: | :----: | :---: |
+|   5   |   1   |   2    |   1   |
+|   2   |   4   |   3    |   2   |
+|   1   |   1   |   5    |   4   |
+
+* **Valores aceitos:** Apenas números inteiros de 1 a 5.
+* **Formato do arquivo:** `.xlsx` (Excel)
+
 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE.txt para mais detalhes.
