@@ -35,11 +35,12 @@ O resultado final do FIOR varia de **1.0 a 5.0**, classificando a operação em 
 O projeto conta com um script em Python que automatiza o cálculo em lote. Ele lê uma planilha comum do Excel contendo os registros de Notas Fiscais e as respectivas notas dos fatores, injeta a lógica matemática e gera um relatório consolidado com os resultados e classificações.
 
 ### Pré-requisitos
+
 ```bash
 pip install pandas openpyxl
 
-
 📊 Como Utilizar
+
 A biblioteca foi desenhada para ser simples e direta, oferecendo suporte para análises individuais ou processamento de planilhas inteiras em lote (Excel).
 
 1. Processamento em Lote (Planilhas Excel)
@@ -51,13 +52,17 @@ Python
 import fior
 
 # Defina o nome do seu arquivo original
+
 caminho_da_planilha = "recebimentos.xlsx"
 
 # Executa o processamento
+
 arquivo_gerado = fior.processar_fior_lote(caminho_da_planilha)
 
 print(f"Sucesso! Relatório salvo como: {arquivo_gerado}")
+
 # O pacote criará automaticamente o arquivo 'fior_resultados_consolidados.xlsx'
+
 2. Análise Individual (Modo Unitário)
 Se você precisa calcular a criticidade de apenas um recebimento específico de forma rápida:
 
@@ -65,12 +70,15 @@ Python
 import fior
 
 # Parâmetros: calcular_fior_unidade(urgencia, divergencia, qualidade, ambiente)
+
 nota_final = fior.calcular_fior_unidade(5, 4, 2, 1)
 zona_criticidade = fior.mapear_zona_criticidade(nota_final)
 
 print(f"Nota FIOR: {nota_final}")
 print(f"Status do Recebimento: {zona_criticidade}")
+
 🎯 Variáveis do Modelo
+
 O cálculo ponderado avalia os seguintes pilares operacionais (notas de 1 a 5):
 
 F_urg: Grau de urgência do material ou processo.
@@ -90,4 +98,5 @@ O retorno classifica o resultado final entre as zonas:
 🔴 Zona Vermelha (Crítico / Ação Imediata)
 
 📝 Licença
+
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE.txt para mais detalhes.
