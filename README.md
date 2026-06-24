@@ -37,3 +37,57 @@ O projeto conta com um script em Python que automatiza o cálculo em lote. Ele l
 ### Pré-requisitos
 ```bash
 pip install pandas openpyxl
+
+
+📊 Como Utilizar
+A biblioteca foi desenhada para ser simples e direta, oferecendo suporte para análises individuais ou processamento de planilhas inteiras em lote (Excel).
+
+1. Processamento em Lote (Planilhas Excel)
+Esta é a forma mais comum de uso no dia a dia. O pacote varre todas as linhas da planilha, calcula as notas e gera um novo arquivo consolidado.
+
+⚠️ Requisito Obrigatório: A sua planilha de entrada precisa conter exatamente estas 4 colunas: F_urg, F_div, F_qual e F_amb.
+
+Python
+import fior
+
+# Defina o nome do seu arquivo original
+caminho_da_planilha = "recebimentos.xlsx"
+
+# Executa o processamento
+arquivo_gerado = fior.processar_fior_lote(caminho_da_planilha)
+
+print(f"Sucesso! Relatório salvo como: {arquivo_gerado}")
+# O pacote criará automaticamente o arquivo 'fior_resultados_consolidados.xlsx'
+2. Análise Individual (Modo Unitário)
+Se você precisa calcular a criticidade de apenas um recebimento específico de forma rápida:
+
+Python
+import fior
+
+# Parâmetros: calcular_fior_unidade(urgencia, divergencia, qualidade, ambiente)
+nota_final = fior.calcular_fior_unidade(5, 4, 2, 1)
+zona_criticidade = fior.mapear_zona_criticidade(nota_final)
+
+print(f"Nota FIOR: {nota_final}")
+print(f"Status do Recebimento: {zona_criticidade}")
+🎯 Variáveis do Modelo
+O cálculo ponderado avalia os seguintes pilares operacionais (notas de 1 a 5):
+
+F_urg: Grau de urgência do material ou processo.
+
+F_div: Índice de divergência identificada (físico vs. nota).
+
+F_qual: Critérios de conformidade e qualidade do item.
+
+F_amb: Fatores de impacto ao ambiente ou segurança da operação.
+
+O retorno classifica o resultado final entre as zonas:
+
+🟢 Zona Verde (Operação Normal / Baixo Risco)
+
+🟡 Zona Amarela (Atenção / Risco Moderado)
+
+🔴 Zona Vermelha (Crítico / Ação Imediata)
+
+📝 Licença
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE.txt para mais detalhes.
